@@ -9,16 +9,16 @@ export const Navbar = () => {
 //    console.log(tokenvalue) 
 
   return (
-    <div className='w-[1440px] h-[30px]  flex flex-row gap-[32px] pl-[20px] pt-[12px] pr-[120px] pb-[120px] bg-richblack-700 '>
+    <div  className='flex flex-row justify-around'>
  
-       <div className='w-[160px] h-[132px]'>
+       <div className='w-[160px] '>
               <Link to={'/'}>
               <img src= {logo}/>
               </Link>
               
        </div> 
 
-       <div className='w-[816px] h-[32px] justify-evenly gap-[4px] flex flex-row text-white items-center'>
+       <div className='w-[816px]  justify-evenly gap-[4px] flex flex-row text-white items-center'>
             {
                 NavbarLinks.map ( (item) => {
                     return (
