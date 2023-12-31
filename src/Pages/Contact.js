@@ -28,8 +28,8 @@ export const Contact = () => {
        <div className='w-[40%]'>
 
         {
-            content.map((ele ,index)=> {
-                return (<div> 
+            content.map((ele)=> {
+                return (<div  key={ele.text}> 
                     
                     <p> {ele.text}</p>
                     <p> {ele.subtext} </p>

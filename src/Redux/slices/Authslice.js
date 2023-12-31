@@ -1,18 +1,31 @@
-import { createSlice } from "@reduxjs/toolkit"
+import { createSlice } from "@reduxjs/toolkit";
 
-const Intialstate = {
-   token : "hi"
-} 
+const initialState = {
+   userdata : null ,
+   token : null,
+   loading : false
+    
+}
+
 
 const authslice = createSlice({
-   name:"auth" ,
-   Intialstate ,
-   reducers :{       
-     
-   },
-  
-})
+   name: "auth" ,
+   initialState ,
+   reducers : {
+      settoken : (state , action) => {
+            state.userdata = action.payload
+            console.log(state.userdata)
+      } ,
+      setloading : (state , action ) => {
+         state.loading = action.payload
+         console.log(state.loading)
+      }
+   }
+});
 
-export const {verifytoken} = authslice.actions
+export const {settoken , setloading} = authslice.actions
 
-export default authslice.reducer
+export default authslice.reducer  
+
+
+
