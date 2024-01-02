@@ -9,8 +9,12 @@ import { Courseinfo } from '../component/Courseinfo';
 import { Instructor } from '../component/Instructor';
 import { Slider } from '../component/Slider';
 import { CourseCard } from '../component/CourseCard';
+import { useLocation } from 'react-router-dom';
 
 export const Home = () => {
+
+   const location = useLocation() 
+  
   return (
     <div >
     

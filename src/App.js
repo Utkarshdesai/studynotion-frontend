@@ -1,12 +1,15 @@
 import "./App.css";
 import { Route ,Routes } from "react-router-dom";
 import { Home } from "./Pages/Home";
-import { Footer } from "./Pages/Footer";
 import { Navbar } from "./component/common/Navbar";
 import { About } from "./Pages/About";
 import { Contact } from "./Pages/Contact";
 import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
+import { Dashboard } from "./Pages/Dashboard";
+import {Error} from '../src/Pages/Error'
+import { Setting } from "./component/Dashboard/Setting";
+
 
 function App() {
   return (
@@ -16,10 +19,21 @@ function App() {
         <Route path="/"  element={<Home></Home>}></Route> 
         <Route path="/about" element ={<About></About>}></Route>
         <Route path="/contact" element={<Contact></Contact>}></Route>
-          <Route path="/login" element={<Login></Login>}></Route> 
-        <Route path="/signup" element={<Signup></Signup>}></Route>  
+        <Route path="/login" element={<Login></Login>}></Route> 
+        <Route path="/signup" element={<Signup></Signup>}></Route>
+        <Route element={<Dashboard></Dashboard>}>   </Route>    
+        <Route path="/dashboard/setting" element={<Setting></Setting>}> </Route>
+        
+ 
+       
+
+          
+        
+        
+
+         <Route path="*" element={<Error></Error>}></Route>
       </Routes> 
-      <Footer></Footer>
+      
      
     </div>
   );
