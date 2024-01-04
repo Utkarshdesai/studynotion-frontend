@@ -7,39 +7,39 @@ import aboutimg_3 from '../../assets/Images/aboutus3.webp'
 export const Aboutsection_1 = () => {
   return (
     <div >
-       <div className='gap-9'>
+       <div   >
           <div>
-              <h1 className='text-center text-white '> 
+              <h1 className='mx-auto py-20 text-4xl font-semibold lg:w-[70%]'> 
               Driving Innovation in Online Education for 
               <Higlighttext text={'bright Future'} ></Higlighttext>
               </h1>
           </div>
 
-             <div className='mb-2'>
-                 <p className='text-white'>
+             <div>
+                 <p className='mx-auto mt-3 text-center text-base font-medium text-richblack-300 lg:w-[95%]'>
                  Studynotion is at the forefront of driving innovation in online education. 
                  We're passionate about creating a brighter future by 
                  offering cutting-edge courses, leveraging emerging technologies, and nurturing a vibrant learning community.
                  </p>
             </div> 
 
-            <div className='flex flex-row mx-auto'> 
+            <div className="sm:h-[70px] lg:h-[150px]"> 
 
-               <div> 
+               <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5"> 
                  <img src={aboutimg_1} alt='about1-img'/>
-               </div>
+               
 
-               <div> 
+               
                  <img src={aboutimg_2} alt='about1-img'/>
-               </div> 
+              
 
-               <div> 
+               
                  <img src={aboutimg_3} alt='about1-img'/>
                </div>
 
             </div> 
 
-            <div className='mt-2'>
+            <div className='m'>
                  <p className='text-white'> 
                  We are passionate about revolutionizing the way we learn. 
                  Our innovative platform combines technology, expertise, 

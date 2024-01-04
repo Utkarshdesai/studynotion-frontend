@@ -12,7 +12,7 @@ export const Contactform = ({heading , subheading}) => {
 
    console.log(useForm()) 
 
-   const onsubmit = (data) => {
+   const submitcontact = (data) => {
     console.log(data)
    }
 
@@ -26,7 +26,7 @@ export const Contactform = ({heading , subheading}) => {
          {subheading}
         </p>
 
-        <form onSubmit={handleSubmit (onsubmit)}> 
+        <form onSubmit={handleSubmit (submitcontact)}> 
 
          <div className='mb-8'> 
            <label className='text-white'> Firstname </label>

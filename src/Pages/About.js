@@ -8,7 +8,7 @@ export const About = () => {
   
  
   return (
-    <div className='mx-auto mt-[100px] text-white'>
+    <div>
   
      
        {/* secction 1  */} 

@@ -8,7 +8,9 @@ import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
 import { Dashboard } from "./Pages/Dashboard";
 import {Error} from '../src/Pages/Error'
-import { Setting } from "./component/Dashboard/Setting";
+
+import { Myprofile } from "./component/Dashboard/Myprofile";
+import { Enrolledcourse } from "./component/Dashboard/Enrolledcourse";
 
 
 function App() {
@@ -21,8 +23,14 @@ function App() {
         <Route path="/contact" element={<Contact></Contact>}></Route>
         <Route path="/login" element={<Login></Login>}></Route> 
         <Route path="/signup" element={<Signup></Signup>}></Route>
-        <Route element={<Dashboard></Dashboard>}>   </Route>    
-        <Route path="/dashboard/setting" element={<Setting></Setting>}> </Route>
+        <Route element={<Dashboard></Dashboard>}>  
+
+       
+        <Route path="/dashboard/my-profile" element={<Myprofile></Myprofile>}> </Route>
+        <Route path= "/dashboard/enrolled-courses" element={<Enrolledcourse/>}></Route>
+
+         </Route>    
+     
         
  
        
