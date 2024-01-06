@@ -11,6 +11,7 @@ import {Error} from '../src/Pages/Error'
 
 import { Myprofile } from "./component/Dashboard/Myprofile";
 import { Enrolledcourse } from "./component/Dashboard/Enrolledcourse";
+import { Index } from "./component/Dashboard/settings/Index";
 
 
 function App() {
@@ -28,7 +29,8 @@ function App() {
        
         <Route path="/dashboard/my-profile" element={<Myprofile></Myprofile>}> </Route>
         <Route path= "/dashboard/enrolled-courses" element={<Enrolledcourse/>}></Route>
-
+     
+         
          </Route>    
      
         

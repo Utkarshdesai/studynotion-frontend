@@ -1,70 +1,35 @@
 import React from 'react'
-import { Courseinfo_form } from './Courseinfo_form' 
 import { Courseupload_tips } from './Courseupload_tips'
-import { useSelector } from 'react-redux'
-import { Coursebuilder } from '../coursebuilder/Coursebuilder'
-import { Publish } from '../coursepublish/Publish'
+import { Renderstep } from './Renderstep'
 
 export const Coursestep1 = () => {
 
-    const step = useSelector((state) => state.course.step)
- 
-    const steptimeline = [
-        { 
-           id: 1 ,
-           title: "course information"
-
-        },
-      
-        { 
-            id: 2 ,
-            title: "course builder"
- 
-        },
-
-        { 
-            id: 3 ,
-            title: "publish"
- 
-        },
-       
-    ]
-
-
-
   return (
     <div >
-
-        <div className="relative mb-2 flex w-full justify-center"> 
-
-        {
-            steptimeline.map ( (item) => {
-                return ( <div key={item.id}> 
-                    
-                    <div> {item.id} </div> 
-                     <p>  {item.title} </p>
-                    
-                    
-                 </div>)
-            })
-        }
-
-      </div>
-   
+      <>
+      <div className="flex w-full items-start gap-x-6">
+        <div className="flex flex-1 flex-col">
+          <h1 className="mb-14 text-3xl font-medium text-richblack-5">
+            Add Course
+          </h1>
+          <div className="flex-1">
+            <Renderstep />
+          </div>
+        </div>
+        {/* Course Upload Tips */}
         <div> 
         <Courseupload_tips></Courseupload_tips>
-       </div>
+       </div> */
+        
+      </div>
+    </>
+
+        
+      
+
 
   
-   {/* Render specific component based on current step */}
-
-     
-       { step  === 1 &&  <Courseinfo_form> </Courseinfo_form> }
-      
-       { step  === 2  &&  <Coursebuilder></Coursebuilder> }  
-
-       { step  === 3   &&  <Publish></Publish> }
-
+   
     </div>
   )
 }
