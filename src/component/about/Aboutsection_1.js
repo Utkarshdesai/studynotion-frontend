@@ -26,7 +26,7 @@ export const Aboutsection_1 = () => {
             <div className="sm:h-[70px] lg:h-[150px]"> 
 
                <div className="absolute bottom-0 left-[50%] grid w-[100%] translate-x-[-50%] translate-y-[30%] grid-cols-3 gap-3 lg:gap-5"> 
-                 <img src={aboutimg_1} alt='about1-img'/>
+                 <img src={aboutimg_1} alt='about1-img' loading='lazy'/>
                
 
                

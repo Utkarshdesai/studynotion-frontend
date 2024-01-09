@@ -67,7 +67,7 @@ export const Home = () => {
             loop
             muted
             controls> 
-               <source src= {banner}  type='video/mp4' ></source>
+               <source src= {banner}  type='video/mp4' loading='lazy' ></source>
             </video>
          </div>
 

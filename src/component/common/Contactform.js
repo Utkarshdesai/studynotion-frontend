@@ -17,18 +17,22 @@ export const Contactform = ({heading , subheading}) => {
    }
 
   return (
-    <div className='flex flex-col mt-7 mx-auto justify-center items-center gap-8 h-[700px]'>
-        <h1 className='text-white'> 
+    <div className="border border-richblack-600 text-richblack-300 rounded-xl p-7 lg:p-14 flex gap-3 flex-col">
+        <h1 className="text-4xl leading-10 font-semibold text-richblack-5"> 
            {heading}
         </h1> 
         
-        <p className='text-white'>
+        <p >
          {subheading}
         </p>
 
-        <form onSubmit={handleSubmit (submitcontact)}> 
+        <form 
+          className="flex flex-col gap-7"
+          onSubmit={handleSubmit (submitcontact)}> 
 
-         <div className='mb-8'> 
+        {/* first name */}
+         <div className="flex flex-col gap-5 lg:flex-row"> 
+         <div className="flex flex-col gap-2 lg:w-[48%]"> 
            <label className='text-white'> Firstname </label>
 
             <input
@@ -45,7 +49,7 @@ export const Contactform = ({heading , subheading}) => {
 
                   {
                         errors.firstname && (
-                            <span>
+                            <span className="-mt-1 text-[12px] text-yellow-100">
                                 Please enter Your name
                             </span>
                         )
@@ -53,8 +57,8 @@ export const Contactform = ({heading , subheading}) => {
 
          </div>
            
-            
-         <div className='mb-8'> 
+            {/*last name  */}
+         <div className="flex flex-col gap-2 lg:w-[48%]"> 
            <label className='text-white'> lastname </label>
 
             <input
@@ -70,17 +74,20 @@ export const Contactform = ({heading , subheading}) => {
                 
                     {
                         errors.lastname && (
-                            <span>
+                            <span className="-mt-1 text-[12px] text-yellow-100">
                                 Please enter Your lastname
                             </span>
                         )
                     }
 
-
+    
+         </div> 
          </div>
 
 
-         <div className='mb-8'> 
+
+
+         <div className="flex flex-col gap-2 lg:w-[48%]" > 
            <label className='text-white'> email </label>
 
             <input
@@ -106,7 +113,7 @@ export const Contactform = ({heading , subheading}) => {
 
          </div>
 
-         <div>
+         <div className="flex flex-col gap-2 lg:w-[48%]">
           <label className='text-white'> phone Number </label> 
 
            <div className='flex flex-row'>
@@ -161,7 +168,7 @@ export const Contactform = ({heading , subheading}) => {
 
          </div> 
 
-        <div className='mt-8'> 
+        <div className="flex flex-col gap-2 lg:w-[48%]"> 
       
         <label className='text-white'> enter your message</label>
         <textarea
