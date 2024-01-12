@@ -4,6 +4,7 @@ import { useSelector } from 'react-redux'
 import { Resetpassword } from './Resetpassword'
 import { Newpassword } from './Newpassword'
 import { Dashboard } from './Dashboard'
+import {Renderstep} from '../component/Dashboard/Courseinfo/Renderstep'
 
 export const Login = () => {
 
@@ -11,7 +12,7 @@ export const Login = () => {
   return (
     <div> 
       
-      <Dashboard></Dashboard>
+    <Renderstep></Renderstep>
     </div>
   )
 }

@@ -7,7 +7,7 @@ export const store = configureStore({
    reducer: {
       auth: authreducer ,
       profile : profilereducer ,
-      course : coursereducer ,
+      courses : coursereducer ,
    },
 });
 
