@@ -5,7 +5,7 @@ import { useRef } from 'react'
 
 export const Coursethumbnail = ({label,register,setvalue ,getvalue ,errors ,name}) => {
 
-   const course = useSelector( (state) => state.course.courses)  
+   const course = useSelector( (state) => state.courses.course)  
 
    const [selectedfile ,setselectedfile] = useState(null) 
    const [previewFile ,setpreviewFile] = useState(null)

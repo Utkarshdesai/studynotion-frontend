@@ -3,12 +3,12 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import {MdAddCircleOutline} from "react-icons/md"
 import IconBtn from '../../common/IconBtn'
-import { setstep  ,setcourses ,seteditcourse} from '../../../Redux/slices/Courseslice'
+import { setstep ,setcourses ,seteditcourse} from '../../../Redux/slices/Courseslice'
 import { Nestedsection } from './Nestedsection'
 export const Coursebuilder = () => {
 
 
-const [editsection ,seteditsection] = useState(null)
+const [editsection ,seteditsection] = useState(true)
 const [loading ,setloading] = useState(false)
 
  const course = useSelector ((state) => state.courses.course) 
@@ -16,14 +16,18 @@ const [loading ,setloading] = useState(false)
  const step  = useSelector ((state) => state.courses.step)
  const dispatch = useDispatch()
 
- const {register ,handleSubmit ,formState:{errors}} = useForm()
+ const {register ,handleSubmit , setValue, formState:{errors}} = useForm()
 
+  // submit data to backend
   const coursebuilder = (data) =>{
       console.log(data)
+
+      // check that form is edit , created
   } 
 
   const cancelEdit= () => {
     seteditsection(null)
+    setValue("sectionName" , '')
   }
 
   const gobackbtn = () => {
@@ -33,6 +37,11 @@ const [loading ,setloading] = useState(false)
 
   const nextbtn = () => {
      //at leaast one course section 
+  }
+
+  // edit section name 
+  const handleeditsection = (sectionId ,sectionName) => {
+    
   }
 
 
@@ -49,9 +58,9 @@ const [loading ,setloading] = useState(false)
           <input
            type='text'
            placeholder='enter section name'
-           name = "section"
+           name = "sectionName"
            id='sectionname'
-           {...register('section' , {required : true})}  
+           {...register('sectionName' , {required : true})}  
           />
 
           {
@@ -80,7 +89,12 @@ const [loading ,setloading] = useState(false)
         </div>
 
           <div>
-            <Nestedsection/>
+            {/* check coursecontent legth >0  */}
+
+            {
+               course?.CourseContent.length > 0 && ( <Nestedsection  handleeditsection = {handleeditsection} />)
+            }
+          
           </div>
 
        <div>

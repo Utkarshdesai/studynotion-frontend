@@ -6,7 +6,7 @@ import { Courseinfo_form } from './Courseinfo_form'
 
 export const Renderstep = () => {
  
-    const step = useSelector((state) => state.course.step)
+    const step = useSelector((state) => state.courses.step)
  
     const steptimeline = [
         { 
@@ -60,11 +60,11 @@ export const Renderstep = () => {
             {/* Render specific component based on current step */}
 
                 
-            { step  === 1 &&  <Courseinfo_form> </Courseinfo_form> }
+               { step  === 1 &&  (<Courseinfo_form> </Courseinfo_form>) }
                 
-                { step  === 2  &&  <Coursebuilder></Coursebuilder> }  
+                { step  === 2  &&  (<Coursebuilder></Coursebuilder>) }  
 
-                { step  === 3   &&  <Publish></Publish> }
+                { step  === 3   &&  (<Publish></Publish>) }
 
 
 
