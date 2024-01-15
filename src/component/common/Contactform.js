@@ -42,9 +42,10 @@ export const Contactform = ({heading , subheading}) => {
                 placeholder='enter your first name'
                 {...register ('firstname' , {
                     required :true ,
+
                 })}
 
-                
+                className="form-style w-full"
                 />
 
                   {
@@ -69,6 +70,7 @@ export const Contactform = ({heading , subheading}) => {
                 {...register ('lastname' , {
                     required :true ,
                 })}
+                className="form-style w-full"
                 />
 
                 
@@ -99,6 +101,7 @@ export const Contactform = ({heading , subheading}) => {
                     required :true ,
                 })}
 
+                className="form-style w-full"
                  />
                 
                  
@@ -120,7 +123,7 @@ export const Contactform = ({heading , subheading}) => {
             { <select 
               name='dropdown' 
               id='dropdown'
-              className='bg-richblack-300 w-[80px]'
+            
               {...register("countrycode", {required:true})}
 
             >
@@ -151,6 +154,7 @@ export const Contactform = ({heading , subheading}) => {
                  minLength : {value:8 , message:"invalid"}
              })}
             
+            className="form-style w-full"
              /> 
 
                     {
@@ -179,6 +183,7 @@ export const Contactform = ({heading , subheading}) => {
             {...register ('message' , {
                 
             })}
+            className="form-style w-full"
            />
 
                      {

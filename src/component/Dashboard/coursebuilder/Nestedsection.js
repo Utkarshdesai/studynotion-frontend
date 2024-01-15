@@ -5,7 +5,7 @@ import {MdEdit} from "react-icons/md"
 import {RiDeleteBin6Line} from "react-icons/ri"
 import {BiDownArrow} from "react-icons/bi"
 import {AiOutlinePlus} from "react-icons/ai"
-import {ConfirmamtionModal} from '../../common/ConfirmationModal'
+import ConfirmamtionModal from '../../common/ConfirmationModal'
 
 
 export const Nestedsection = ({handleeditsection}) => {
@@ -28,7 +28,7 @@ export const Nestedsection = ({handleeditsection}) => {
   const [addsubsection , setaddsubsection ] = useState(null)
   const [editsubsection , seteditsubsection] = useState(null)
   const [viewsubsection , setviewsubsection] = useState(null) 
-  const [ConfirmamtionModal , setConfirmamtionModal] = useState(null) 
+  const [confirmamtionModal , setconfirmamtionModal] = useState(null) 
 
   const deletesection = () => {
     // handle asnyc opeation 
@@ -62,16 +62,15 @@ export const Nestedsection = ({handleeditsection}) => {
                </button> 
 
                <button 
-                  onClick={ 
-                  setConfirmamtionModal (
-                    text1 = " Delete this section" , 
-                    text2 = "do you really want to delete this section" ,
-                    btn1Text = 'yes' ,
-                    btn2Text = 'cancel' ,
-                    btn1Handler =  deletesection (), 
-                    btn2Handler = setConfirmamtionModal(null)
-                  )
-                }
+                  onClick={ () => setconfirmamtionModal ({
+                    text1 :" Delete this section" , 
+                    text2 :"do you really want to delete this section" ,
+                    btn1Text : 'yes' ,
+                    btn2Text : 'cancel' ,
+                    btn1Handler : deletesection(), 
+                    btn2Handler : setconfirmamtionModal(null)
+                  })}
+                
                
                
                > 
@@ -111,16 +110,15 @@ export const Nestedsection = ({handleeditsection}) => {
 
                     <div> 
                       <button 
-                       onClick={ 
-                        setConfirmamtionModal (
-                          text1 = " Delete this Subsection" , 
-                          text2 = "do you really want to delete this Subsection" ,
-                          btn1Text = 'yes' ,
-                          btn2Text = 'cancel' ,
-                          btn1Handler =  deletesubsection(), 
-                          btn2Handler = setConfirmamtionModal(null)
-                        )
-                      }   
+                       onClick ={ () => setconfirmamtionModal ( {
+                        text1 :" Delete this Subsection" , 
+                        text2 :"do you really want to delete this Subsection" ,
+                        btn1Text : 'yes' ,
+                        btn2Text : 'cancel' ,
+                        btn1Handler : deletesubsection(), 
+                        btn2Handler : setconfirmamtionModal(null)
+                      })}
+                    
                       > 
                       <RiDeleteBin6Line/>
                       </button>
@@ -148,6 +146,15 @@ export const Nestedsection = ({handleeditsection}) => {
             </button>
 
         </div>
+
+        
+           { confirmamtionModal ? (
+               <ConfirmamtionModal modalData={confirmamtionModal} />
+          ) : (
+            <></>
+          )}
+    
+        
 
     </div>
   )

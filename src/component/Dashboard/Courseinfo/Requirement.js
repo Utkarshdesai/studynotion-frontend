@@ -35,6 +35,7 @@ export const Requirement = ({name , label , setvalue , getvalues ,errors , regis
        id='require'
        value={requirement}
        onChange={(e)=> setrequirement(e.target.value)}
+       className="form-style w-full"
       />
 
       <button

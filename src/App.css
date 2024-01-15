@@ -39,3 +39,21 @@ html ,body {
     100% {transform: rotate(1turn)}
   }
 
+  .form-style {
+    background-color: #2C333F;
+    border-radius: 8px;
+    padding: 12px;
+    gap: 12px; 
+   color: #999DAA;
+   line-height: 24px ;
+   font-family: 'inter' ;
+   font-size: 16px;
+   font-weight: Medium ; 
+  
+  }
+
+  .w-full {
+    /* Width and height */
+    width: 617px;
+    height: 48px;
+  }
