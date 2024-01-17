@@ -39,21 +39,10 @@ html ,body {
     100% {transform: rotate(1turn)}
   }
 
+  .lable-style {
+    @apply text-[14px] text-richblack-5;
+  }
   .form-style {
-    background-color: #2C333F;
-    border-radius: 8px;
-    padding: 12px;
-    gap: 12px; 
-   color: #999DAA;
-   line-height: 24px ;
-   font-family: 'inter' ;
-   font-size: 16px;
-   font-weight: Medium ; 
+    @apply rounded-lg bg-richblack-700 p-3 text-[16px] leading-[24px] text-richblack-5 shadow-[0_1px_0_0] shadow-white/50 placeholder:text-richblack-400 focus:outline-none;
+  }
   
-  }
-
-  .w-full {
-    /* Width and height */
-    width: 617px;
-    height: 48px;
-  }

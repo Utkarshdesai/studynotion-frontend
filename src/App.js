@@ -8,6 +8,7 @@ import { Login } from "./Pages/Login";
 import { Signup } from "./Pages/Signup";
 import { Dashboard } from "./Pages/Dashboard";
 import {Error} from '../src/Pages/Error'
+import { Footer } from "./Pages/Footer";
 
 import { Myprofile } from "./component/Dashboard/Myprofile";
 import { Enrolledcourse } from "./component/Dashboard/Enrolledcourse";
@@ -43,6 +44,7 @@ function App() {
 
          <Route path="*" element={<Error></Error>}></Route>
       </Routes> 
+      
       
      
     </div>

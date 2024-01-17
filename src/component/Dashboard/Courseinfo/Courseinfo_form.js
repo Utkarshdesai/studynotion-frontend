@@ -7,6 +7,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { setstep } from '../../../Redux/slices/Courseslice'
 import IconBtn from '../../common/IconBtn'
 import { MdNavigateNext } from "react-icons/md"
+import { Chipinput } from './Chipinput'
 
 export const Courseinfo_form = () => {
 
@@ -165,28 +166,16 @@ export const Courseinfo_form = () => {
 
           
         {/* tags */}
-         <div className="flex flex-col space-y-2">  
-          <label htmlFor='tags'
-          className='text-sm text-richblack-5'
-          > Tags  </label>   
-
-  
-         <input
-         type='text' 
-         required
-         placeholder='choose a tag'
-         name='tags'
-         id='tags'
-         {...register( 'tags' , {required:true})}
-         className="form-style w-full"
-         />
-
-         {
-           errors.tags && (<p> enter a tags </p>)
-         } 
-
-
-         </div>
+          <Chipinput
+               label="Tags"
+               name="courseTags"
+               placeholder="Enter Tags and press Enter"
+               register={register}
+               errors={errors}
+               setValue={setValue}
+               getValues={getValues}
+                
+          />
 
          {/* add thumbnail
           */}

@@ -5,6 +5,7 @@ import { Resetpassword } from './Resetpassword'
 import { Newpassword } from './Newpassword'
 import { Dashboard } from './Dashboard'
 import {Renderstep} from '../component/Dashboard/Courseinfo/Renderstep'
+import { Courseinfo_form } from '../component/Dashboard/Courseinfo/Courseinfo_form'
 
 export const Login = () => {
 
@@ -12,7 +13,8 @@ export const Login = () => {
   return (
     <div> 
       
-    <Renderstep></Renderstep>
+      <Courseinfo_form></Courseinfo_form>
+  
     </div>
   )
 }
