@@ -186,7 +186,7 @@ export const Courseinfo_form = () => {
            getValues= {getValues} 
            label='Coursethumbnail'
            errors={errors}
-
+           editData={editcourse ? course?.thumbnail : null}
           
           />
 

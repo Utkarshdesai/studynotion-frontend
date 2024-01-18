@@ -3,10 +3,11 @@ import { useDropzone } from 'react-dropzone'
 import { useSelector } from 'react-redux'
 import { useRef } from 'react'
 import { FiUploadCloud } from "react-icons/fi"
-// import "video-react/dist/video-react.css"
-// import { Player } from "video-react"
+import "video-react/dist/video-react.css"
+import { Player } from "video-react"
 
-export const Coursethumbnail = ({label,register,setValue ,getvalue ,errors ,name ,viewData=null ,editData=null}) => {
+
+export const Coursethumbnail = ({label,register,setValue , video =false  , errors ,name ,viewData=null ,editData=null}) => {
 
    const course = useSelector( (state) => state.courses.course)  
 
@@ -27,7 +28,13 @@ export const Coursethumbnail = ({label,register,setValue ,getvalue ,errors ,name
         }
       }
 
-      const { getRootProps, getInputProps, isDragActive } = useDropzone(ondrop)
+      const { getRootProps, getInputProps, isDragActive } = useDropzone({
+        accept: !video
+          ? { "image/*": [".jpeg", ".jpg", ".png"] }
+          : { "video/*": [".mp4"] },
+        onDrop,
+      })
+    
     
       const previewFile = (file) => {
         // console.log(file)
@@ -53,7 +60,7 @@ export const Coursethumbnail = ({label,register,setValue ,getvalue ,errors ,name
 
     return (
       <> 
-        <div className="flex flex-col space-y-2">
+      <div className="flex flex-col space-y-2">
       <label className="text-sm text-richblack-5" htmlFor={name}>
         {label} {!viewData && <sup className="text-pink-200">*</sup>}
       </label>
@@ -64,15 +71,15 @@ export const Coursethumbnail = ({label,register,setValue ,getvalue ,errors ,name
       >
         {preview ? (
           <div className="flex w-full flex-col p-6">
-           
+            {!video ? (
               <img
                 src={preview}
                 alt="Preview"
                 className="h-full w-full rounded-md object-cover"
               />
-           
-              {/* <Player aspectRatio="16:9" playsInline src={preview} /> */}
-          
+            ) : (
+              <Player aspectRatio="16:9" playsInline src={preview} />
+            )}
             {!viewData && (
               <button
                 type="button"
@@ -97,7 +104,7 @@ export const Coursethumbnail = ({label,register,setValue ,getvalue ,errors ,name
               <FiUploadCloud className="text-2xl text-yellow-50" />
             </div>
             <p className="mt-2 max-w-[200px] text-center text-sm text-richblack-200">
-              {/* Drag and drop an {video ? "image" : "video"}, or click to{" "} */}
+              Drag and drop an {!video ? "image" : "video"}, or click to{" "}
               <span className="font-semibold text-yellow-50">Browse</span> a
               file
             </p>
@@ -114,6 +121,7 @@ export const Coursethumbnail = ({label,register,setValue ,getvalue ,errors ,name
         </span>
       )}
     </div>
+
 
          
 

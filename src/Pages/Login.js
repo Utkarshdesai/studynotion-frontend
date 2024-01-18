@@ -13,7 +13,7 @@ export const Login = () => {
   return (
     <div> 
       
-      <Courseinfo_form></Courseinfo_form>
+    
   
     </div>
   )
