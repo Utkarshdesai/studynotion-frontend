@@ -1,5 +1,5 @@
 import { apiConnector } from "../apiconnector";
-import rzpLogo from '../../'
+import rzpLogo from '../../assets/Images'
 import { setpayment } from "../../Redux/slices/Courseslice";
 
 const {COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API} = studentEndpoints;
@@ -110,7 +110,7 @@ async function verifyPayment ()
         const response = await apiConnector('POST' , COURSE_VERIFY_API , bodydata , {
         Authorization:`Bearer ${token}`,
         })
-        
+
         if(!response.data.success) {
             throw new Error(response.data.message);
         }
