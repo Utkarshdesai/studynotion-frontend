@@ -7,6 +7,9 @@ import { useDispatch, useSelector } from "react-redux"
 import { useNavigate, useParams } from "react-router-dom"
 //import FormatDate from '../services/FormatDate'
 import Ratingstar from '../component/common/Ratingstar'
+import {Footer} from './Footer' 
+import ConfirmationModal from '../component/common/ConfirmationModal'
+import { Coursebuycard } from '../component/course/Coursebuycard'
 
 
 
@@ -16,6 +19,8 @@ import Ratingstar from '../component/common/Ratingstar'
 export const Coursedetails = () => {   
 
     const token = useSelector ((state) => state.auth.token) 
+    const payment = useSelector((state) => state.courses.payment)
+    const user = useSelector ( (state) => state.profile.profiledata)
     const dispatch = useDispatch()
     const navigate = useNavigate()
   
@@ -53,12 +58,19 @@ export const Coursedetails = () => {
     // // console.log("avgReviewCount: ", avgReviewCount) 
 
 
-    // const handleBuyCourse = () => {
+     const handleBuyCourse = () => {
 
-    // }
-
+     }
    
-    
+     if (payment) {
+      // console.log("payment loading")
+      return (
+        <div className="grid min-h-[calc(100vh-3.5rem)] place-items-center">
+          <div className="spinner"></div>
+        </div>
+      )
+    }
+  
 
 
     
@@ -111,19 +123,19 @@ export const Coursedetails = () => {
               <p className="space-x-3 pb-4 text-3xl font-semibold text-richblack-5">
                 {/* Rs. {price} */}
               </p>
-              <button className="yellowButton" >
+              <button className="yellowButton" onClick={handleBuyCourse} >
                 Buy Now
               </button>
-              <button className="blackButton">Add to Cart</button>
+              <button className="blackButton" >Add to Cart</button>
             </div>
           </div>
           {/* Courses Card */}
           <div className="right-[1rem] top-[60px] mx-auto hidden min-h-[600px] w-1/3 max-w-[410px] translate-y-24 md:translate-y-0 lg:absolute  lg:block">
-            {/* <CourseDetailsCard
-              course={response?.data?.courseDetails}
+             <Coursebuycard
+              // course={response?.data?.courseDetails}
               setConfirmationModal={setConfirmationModal}
-              handleBuyCourse={handleBuyCourse}
-            /> */}
+              // handleBuyCourse={handleBuyCourse}
+            /> 
           </div>
         </div>
       </div>
@@ -162,7 +174,7 @@ export const Coursedetails = () => {
               </div>
             </div>
 
-            {/* Course Details Accordion */}
+            {/* Course Details Accordion todo */}
             <div className="py-4">
               {/* {courseContent?.map((course, index) => (
                 <CourseAccordionBar
@@ -196,7 +208,10 @@ export const Coursedetails = () => {
           </div>
         </div>
       </div>
-      
+      <Footer />
+     {/* {
+       ConfirmationModal && <ConfirmationModal modalData={confirmationModal} /> 
+     } */}
       
 
 

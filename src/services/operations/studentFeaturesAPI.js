@@ -1,6 +1,9 @@
+import { toast } from "react-hot-toast";
+import { studentEndpoints } from "../apis";
 import { apiConnector } from "../apiconnector";
-import rzpLogo from '../../assets/Images'
-import { setpayment } from "../../Redux/slices/Courseslice";
+import rzpLogo from "../../assets/Logo/rzp_logo.png" 
+
+
 
 const {COURSE_PAYMENT_API, COURSE_VERIFY_API, SEND_PAYMENT_SUCCESS_EMAIL_API} = studentEndpoints;
 
@@ -21,7 +24,7 @@ function  loadScript (src) {
 
 }
 
-export async function  buyCourse () {
+export async function buyCourse () {
    const toastId = toast.loading("Loading...");
    try {
     
