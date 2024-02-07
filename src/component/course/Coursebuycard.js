@@ -19,11 +19,11 @@ export const Coursebuycard = () => {
 
   //destructre prop to get data
 
-    const handleShare = () => {
-      copy(window.location.href)
-      toast.success("Link copied to clipboard")
+    // const handleShare = () => {
+    //   copy(window.location.href)
+    //   toast.success("Link copied to clipboard")
   
-    }
+    // }
 
     const handleAddToCart = () => {
        // check for user instuctor student 
@@ -87,7 +87,7 @@ export const Coursebuycard = () => {
           <div className="text-center">
             <button
               className="mx-auto flex items-center gap-2 py-6 text-yellow-100 "
-              onClick={handleShare}
+              // onClick={handleShare}
             >
               <FaShareSquare size={15} /> Share
             </button>
