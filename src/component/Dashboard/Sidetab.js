@@ -2,52 +2,48 @@ import React from 'react'
 import { NavLink, useLocation } from 'react-router-dom'
 import * as Icons from "react-icons/vsc" 
 import { matchPath } from 'react-router-dom'
+import { useDispatch } from 'react-redux'
+import { resetCourseState } from '../../slices/courseSlice'
 
-export const Sidetab = ({name ,icon ,path}) => {
+
+
+export const Sidetab = ({link , iconName}) => {
 
     const location = useLocation()
+    const dispatch = useDispatch()
+    const Icon = Icons[iconName]
 
-    const Icon = Icons[icon]
+    console.log(link)
 
     const currenttab = (route) => {
+        console.log(route)
         return matchPath( {path : route} , location.pathname)
+      
     }
 
+    
+
   return (
-    <div className= 'text-white'>
-        
-       
-        <NavLink to={path}
-        className={`relative px-8 py-2 text-sm font-medium ${currenttab(path)? "text-yellow-50"
-         : "bg-opacity-0 text-richblack-300"} transition-all duration-200`}
-        
-        >
+        <NavLink
+        to={link.path}
+        onClick={() => dispatch(resetCourseState())}
+        className={`relative px-8 py-2 text-sm font-medium ${
+          currenttab(link.path)
+            ? "bg-yellow-800 text-yellow-50"
+            : "bg-opacity-0 text-richblack-300"
+        } transition-all duration-200`}
+      >
+        <span
+          className={`absolute left-0 top-0 h-full w-[0.15rem] bg-yellow-50 ${
+            currenttab(link.path) ? "opacity-100" : "opacity-0"
+          }`}
+        ></span>
+        <div className="flex items-center gap-x-2">
+          {/* Icon Goes Here */}
+          <Icon className="text-lg" />
+          <span>{link.name}</span>
+        </div>
+      </NavLink>
 
-            <span
-            className={`
-            absolute left-0 top-0 h-full w-[0.15rem] bg-yellow-50
-            ${ currenttab(path) ? "opacity-100" :'opacity-0' }`}
-            >
-               
-            </span>
-
-            <div className="flex items-center gap-x-2">
-              
-              <Icon className= "text-lg"></Icon>
-           
-
-              <span>
-                {name}
-              </span>
-
-
-            </div>
-            
-             </NavLink>
-           
-        
-      
-
-    </div>
   )
 }

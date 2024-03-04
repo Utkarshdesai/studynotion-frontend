@@ -7,52 +7,57 @@ import ConfirmationModal from '../common/ConfirmationModal'
 import { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
 import { useDispatch } from 'react-redux'
+import { logout } from '../../services/operations/authAPI'
 
 export const Sidebar = () => {
 
-    const userdata = useSelector((state) => state.auth.userdata)
-    const loading = useSelector((state)  => state.auth.loading) 
+  const { user, loading: profileLoading } = useSelector(
+    (state) => state.profile
+  )
+  const { loading: authLoading } = useSelector((state) => state.auth)
+
     // to keep track of confirmation modal
     const [confirmationModal, setConfirmationModal] = useState(null)
 
      const dispatch = useDispatch()
      const navigate = useNavigate()
     
-
+     if (profileLoading || authLoading) {
+      return (
+        <div className="grid h-[calc(100vh-3.5rem)] min-w-[220px] items-center border-r-[1px] border-r-richblack-700 bg-richblack-800">
+          <div className="spinner"></div>
+        </div>
+      )
+    }
+  
+  
+ 
 
   return (
-    <div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 py-10 px-5">
-        
-       <div className='flex flex-col'>
-        {
-          sidebarLinks.map( (item) => {
-            // check account type
-            return (<div >  
-
-               <Sidetab key={item.id} 
-                name = {item.name} 
-                path={item.path} 
-                icon={item.icon}></Sidetab>
-
-            </div>)
-          } )  
-        } 
-    </div> 
-
-        <Sidetab
-        name={'Setting'}
-        path={'/dashboard/setting'}
-        icon ={"VscSettingsGear"}
-        />
-                     
-        <button
+    <>
+      <div className="flex h-[calc(100vh-3.5rem)] min-w-[220px] flex-col border-r-[1px] border-r-richblack-700 bg-richblack-800 py-10">
+        <div className="flex flex-col">
+          {sidebarLinks.map((link) => {
+            if (link.type && user?.accountType !== link.type) return null
+            return (
+              <Sidetab key={link.id} link={link} iconName={link.icon} />
+            )
+          })}
+        </div>
+        <div className="mx-auto mt-6 mb-6 h-[1px] w-10/12 bg-richblack-700" />
+        <div className="flex flex-col">
+          <Sidetab
+            link={{ name: "Settings",  path: "/dashboard/settings" }}
+            iconName="VscSettingsGear"
+          />
+          <button
             onClick={() =>
               setConfirmationModal({
                 text1: "Are you sure?",
                 text2: "You will be logged out of your account.",
                 btn1Text: "Logout",
                 btn2Text: "Cancel",
-                btn1Handler: () => navigate('/dashboard/my-profile'),
+                btn1Handler: () => dispatch(logout(navigate)),
                 btn2Handler: () => setConfirmationModal(null),
               })
             }
@@ -63,16 +68,15 @@ export const Sidebar = () => {
               <span>Logout</span>
             </div>
           </button>
+        </div>
+      </div>
+      {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
 
-          {confirmationModal && <ConfirmationModal modalData={confirmationModal} />}
-
-         
-    </div>
-
+    
+    
+    
+    
+    </>
   
-               
-            
-
-   
   )
 }

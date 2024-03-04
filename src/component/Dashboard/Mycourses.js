@@ -1,18 +1,31 @@
 import React, { useState } from 'react' 
 import IconBtn from '../common/IconBtn'
 import { useSelector } from 'react-redux'
-import { CourseTable } from './CourseTable'
 import { useNavigate } from 'react-router-dom'
-
+import { VscAdd } from 'react-icons/vsc'
 export const Mycourses = () => {
 
 
-    const token = useSelector( (state) => state.auth.token)
-    const course = useSelector ( (state) = state.courses.course) 
+  
     const navigate = useNavigate()
     const [courses , setcourses] = useState([])
+    const { token } = useSelector((state) => state.auth) 
 
-    //fetch courses from backend 
+    //fetch courses from backend  
+    // useEffect(() => {
+    //   const fetchCourses = async () => {
+    //     const result = await fetchInstructorCourses(token)
+    //     if (result) {
+    //       setCourses(result)
+    //     }
+    //   }
+    //   fetchCourses()
+    //   // eslint-disable-next-line react-hooks/exhaustive-deps
+    // }, [])
+  
+
+
+
   return (
     <>
      <div className="mb-14 flex items-center justify-between">
@@ -25,10 +38,10 @@ export const Mycourses = () => {
         </IconBtn>
       </div>
       
-      {
-         course && 
+      {/* {
+         courses && 
          <CourseTable courses = {courses} setcourss = {setcourses}/>
-      }
+      } */}
 
     </>
   )

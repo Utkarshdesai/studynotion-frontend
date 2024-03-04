@@ -4,7 +4,7 @@ import { Requirement } from './Requirement'
 import {HiOutlineCurrencyRupee} from 'react-icons/hi'
 import { Coursethumbnail } from './Coursethumbnail'
 import { useDispatch, useSelector } from 'react-redux'
-import { setstep } from '../../../Redux/slices/Courseslice'
+import { setStep } from  '../../../slices/courseSlice'
 import IconBtn from '../../common/IconBtn'
 import { MdNavigateNext } from "react-icons/md"
 import { Chipinput } from './Chipinput'
@@ -229,7 +229,7 @@ export const Courseinfo_form = () => {
         <div className="flex justify-end gap-x-2">
         {editcourse && (
           <button
-            onClick={() => dispatch(setstep(2))}
+            onClick={() => dispatch(setStep(2))}
             disabled={loading}
             className={`flex cursor-pointer items-center gap-x-2 rounded-md bg-richblack-300 py-[8px] px-[20px] font-semibold text-richblack-900`}
           >

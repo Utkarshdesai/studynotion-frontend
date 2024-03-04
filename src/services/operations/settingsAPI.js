@@ -1,9 +1,8 @@
 import { toast } from "react-hot-toast"
-
 import { setUser } from "../../slices/profileSlice"
-import { apiConnector } from "../apiconnector"
+import { apiConnector } from "../apiConnector"
 import { settingsEndpoints } from "../apis"
-//import logout 
+import { logout } from "./authAPI"
 
 const {
   UPDATE_DISPLAY_PICTURE_API,
@@ -50,11 +49,14 @@ export function updateProfile(token, formData) {
       const response = await apiConnector("PUT", UPDATE_PROFILE_API, formData, {
         Authorization: `Bearer ${token}`,
       })
+      console.log('profile 1')
       console.log("UPDATE_PROFILE_API API RESPONSE............", response)
 
       if (!response.data.success) {
         throw new Error(response.data.message)
       }
+
+      console.log(response.data)
       const userImage = response.data.updatedUserDetails.image
         ? response.data.updatedUserDetails.image
         : `https://api.dicebear.com/5.x/initials/svg?seed=${response.data.updatedUserDetails.firstName} ${response.data.updatedUserDetails.lastName}`

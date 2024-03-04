@@ -1,4 +1,4 @@
-import React, { useState } from 'react'
+import React, { useEffect, useState } from 'react'
 import Otpinput from "react-otp-input"
 import { Link } from "react-router-dom";
 import { BiArrowBack } from "react-icons/bi";
@@ -6,18 +6,50 @@ import { useSelector } from 'react-redux'
 import { RxCountdownTimer } from "react-icons/rx";
 import { useDispatch } from 'react-redux'; 
 import { Backtobtn } from '../component/common/Backtobtn';
+import { useNavigate } from 'react-router-dom';
+import { sendOtp ,signUp} from '../services/operations/authAPI';
+
 
 export const Verifyemail = () => {
 
-  const [otp , setotp] = useState('') 
+  const [otp, setOtp] = useState("");
+  const { signupData, loading } = useSelector((state) => state.auth);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
 
-  const loading = useSelector( (state) => state.auth.loading) 
+  useEffect(() => {
+    // Only allow access of this route when user has filled the signup form
+    if (!signupData) {
+      navigate("/signup");
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, []);
 
-  const userdata = useSelector((state) => state.auth.loading)
+  const handleVerifyAndSignup = (e) => {
+    e.preventDefault();
+    const {
+      accountType,
+      firstName,
+      lastName,
+      email,
+      password,
+      confirmPassword,
+    } = signupData;
 
-  const verifyemailand_submit = (e) => {
-    e.PrevantDefault()
-  }
+    dispatch(
+      signUp(
+        accountType,
+        firstName,
+        lastName,
+        email,
+        password,
+        confirmPassword,
+        otp,
+        navigate
+      )
+    );
+  };
+
 
   
 
@@ -27,8 +59,7 @@ export const Verifyemail = () => {
      {
         loading ?
         
-        <div className='text-white'> Loading... </div>
-        
+        <div className='text-white'> Loading... </div>        
         :
         (
         <div> 
@@ -39,12 +70,11 @@ export const Verifyemail = () => {
                 Enter the code below </p>
             </div> 
 
-
-            <form onSubmit={verifyemailand_submit}>
+            <form onSubmit={handleVerifyAndSignup}>
                 <div > 
                     <Otpinput 
                          value={otp}
-                         onChange={setotp}
+                         onChange={setOtp}
                          numInputs={6}
                          renderInput={(props) => (
                            <input
@@ -61,12 +91,11 @@ export const Verifyemail = () => {
                            gap: "0 6px",
                          }}
          
-                    />
-                  
+                    />                  
 
                 </div>
        
-                    <button onClick='submit'
+                    <button type='submit'
                     className="w-full bg-yellow-50 py-[12px] px-[12px] rounded-[8px] mt-6 font-medium text-richblack-900"
                      >
                         Verify Email
@@ -75,16 +104,17 @@ export const Verifyemail = () => {
 
                  <div className="mt-6 flex items-center justify-between"> 
                             <Backtobtn 
-                            linkto={'/login'}
-                            text= {'Back to login'}
+                            linkto={'/signup'}
+                            text= {'Back to signup'}
                             >
                             </Backtobtn>
 
 
                      <button  
                      className="flex items-center text-blue-100 gap-x-2"
-                     >
-                            
+                     onClick={() => dispatch(sendOtp(signupData.email))}
+
+                     >                           
                         <RxCountdownTimer />
                         Resend it
                 
@@ -97,8 +127,6 @@ export const Verifyemail = () => {
             </div>
         )
      }
-
-
     </div>
   )
 }

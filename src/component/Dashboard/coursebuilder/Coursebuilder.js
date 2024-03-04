@@ -3,17 +3,25 @@ import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
 import {MdAddCircleOutline} from "react-icons/md"
 import IconBtn from '../../common/IconBtn'
-import { setstep ,setcourses ,seteditcourse} from '../../../Redux/slices/Courseslice'
 import { Nestedsection } from './Nestedsection'
+import {
+  setCourse,
+  setEditCourse,
+  setStep,
+} from '../../../slices/courseSlice'
 export const Coursebuilder = () => {
 
 
 const [editsection ,seteditsection] = useState(true)
 const [loading ,setloading] = useState(false)
+const { course } = useSelector((state) => state.course)
+const { token } = useSelector((state) => state.auth)
 
- const course = useSelector ((state) => state.courses.course) 
- const token  = useSelector ((state) => state.auth.token)
- const step  = useSelector ((state) => state.courses.step)
+
+
+ 
+
+ 
  const dispatch = useDispatch()
 
  const {register ,handleSubmit , setValue, formState:{errors}} = useForm()
@@ -31,8 +39,8 @@ const [loading ,setloading] = useState(false)
   }
 
   const gobackbtn = () => {
-    dispatch(setstep(1))
-    dispatch(seteditcourse(true))
+    dispatch(setStep(1))
+    dispatch(setEditCourse(true))
   }
 
   const nextbtn = () => {

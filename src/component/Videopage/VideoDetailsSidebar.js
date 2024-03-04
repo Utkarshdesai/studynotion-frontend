@@ -5,8 +5,7 @@ import { IoIosArrowBack } from "react-icons/io"
 import { useSelector } from "react-redux"
 import { useLocation, useNavigate, useParams } from "react-router-dom"
 import IconBtn from '../common/IconBtn'
-
-
+import { BigPlayButton, Player } from 'video-react'
 
 
 export const VideoDetailsSidebar = ({setReviewModal}) => {

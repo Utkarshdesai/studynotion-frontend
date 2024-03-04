@@ -1,7 +1,7 @@
 import React, { useState } from 'react'
 import { useForm } from 'react-hook-form'
 import { useDispatch, useSelector } from 'react-redux'
-import { setstep } from '../../../Redux/slices/Courseslice'
+import { setStep } from '../../../slices/courseSlice'
 import IconBtn from '../../common/IconBtn'
 
 export const Publish = () => {
@@ -17,7 +17,7 @@ export const Publish = () => {
   } 
 
   const goback = () => {
-    dispatch(setstep(2))
+    dispatch(setStep(2))
   } 
 
 
