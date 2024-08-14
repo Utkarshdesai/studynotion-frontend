@@ -9,3 +9,67 @@ html ,body {
     overflow-x : hidden
 }
 
+.custom-loader {
+    width: 50px;
+    height: 50px;
+    display: grid;
+    border-radius: 50%;
+    -webkit-mask:radial-gradient(farthest-side,#0000 40%,#000 41%);
+    background:
+      linear-gradient(0deg ,#766DF480 50%,#766DF4FF 0) center/4px 100%,
+      linear-gradient(90deg,#766DF440 50%,#766DF4BF 0) center/100% 4px;
+    background-repeat: no-repeat;
+    animation: s3 1s infinite steps(12);
+  }
+  .custom-loader::before,
+  .custom-loader::after {
+     content:"";
+     grid-area: 1/1;
+     border-radius: 50%;
+     background:inherit;
+     opacity: 0.915;
+     transform: rotate(30deg);
+  }
+  .custom-loader::after {
+     opacity: 0.83;
+     transform: rotate(60deg);
+  }
+  
+  @keyframes s3 {
+    100% {transform: rotate(1turn)}
+  }
+
+  .lable-style {
+    @apply text-[14px] text-richblack-5;
+  }
+  .form-style {
+    @apply rounded-lg bg-richblack-700 p-3 text-[16px] leading-[24px] text-richblack-5 shadow-[0_1px_0_0] shadow-white/50 placeholder:text-richblack-400 focus:outline-none;
+  } 
+
+  /* Buttons */
+.yellowButton {
+  @apply cursor-pointer rounded-md bg-yellow-50 px-[20px] py-[8px] font-semibold text-richblack-900;
+}
+
+/* Swiper CSS Starts */
+/* .swiper {
+  max-width: 1200px;
+  width: 91.66%;
+  height: 185px;
+  margin: 50px 0px;
+} */
+
+.swiper-slide {
+  width: 100%;
+  height: 100%;
+}
+/* .swiper-slide {
+  @apply bg-richblack-800 text-richblack-25 p-3 text-[14px];
+} */
+/* Swiper CSS Ends */
+
+.blackButton {
+  @apply cursor-pointer rounded-md bg-richblack-800 px-[20px] py-[8px] font-semibold text-richblack-5;
+}
+
+  

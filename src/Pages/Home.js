@@ -9,8 +9,12 @@ import { Courseinfo } from '../component/Courseinfo';
 import { Instructor } from '../component/Instructor';
 import { Slider } from '../component/Slider';
 import { CourseCard } from '../component/CourseCard';
+import { useLocation } from 'react-router-dom';
 
 export const Home = () => {
+
+  
+  
   return (
     <div >
     
@@ -63,7 +67,7 @@ export const Home = () => {
             loop
             muted
             controls> 
-               <source src= {banner}  type='video/mp4' ></source>
+               <source src= {banner}  type='video/mp4' loading='lazy' ></source>
             </video>
          </div>
 
