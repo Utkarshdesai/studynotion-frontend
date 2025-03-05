@@ -1,31 +1,56 @@
-# React & Tailwind CSS Starter Pack
+# StudyNotion - EdTech Platform
 
-This is a starter pack for creating React projects with Tailwind CSS configured. It uses React version **18.2** and Tailwind CSS version **3.2**.
+StudyNotion is a fully functional EdTech platform built using the MERN stack (MongoDB, Express.js, React.js, Node.js). It enables users to create, consume, and rate educational content, providing a seamless and interactive learning experience for students while allowing instructors to showcase their expertise.
 
-## Usage
+## Features
+### For Students:
+- Browse available courses with descriptions and ratings
+- Add courses to the wishlist
+- Purchase and enroll in courses
+- Access course content (videos, materials, etc.)
+- Manage personal account details
 
-This starter pack includes a basic setup for using **Tailwind CSS with React**. To start building your own components and styles, follow these steps:
+### For Instructors:
+- Create, update, and delete courses
+- Manage course content and pricing
+- View insights on course engagement
+- Edit profile details
 
-1. Clone the repository to your local machine.
-    ```sh
-    git clone https://github.com/thepranaygupta/react-tailwind-css-starter-pack.git
-    ```
+## Tech Stack
+- **Frontend:** React.js, Redux, Tailwind CSS
+- **Backend:** Node.js, Express.js, MongoDB, Mongoose
+- **Authentication:** JWT, Bcrypt, OTP Verification
+- **Media Management:** Cloudinary
+- **Payments:** Razorpay Integration
 
-1. Install the required packages.
-    ```sh
-    cd react-tailwind-css-starter-pack
-    npm install
-    ```
+## System Architecture
+StudyNotion follows a client-server architecture with three main components:
+1. **Frontend:** React.js application that communicates with the backend via REST APIs.
+2. **Backend:** Node.js and Express.js server handling business logic and authentication.
+3. **Database:** MongoDB for storing user data, courses, and transactions.
 
-1. Start the development server.
-    ```sh
-    npm start
-    ```
-1. Open the project in your browser at [`http://localhost:3000`](http://localhost:3000) to view your project.
-1. Create your React components and add your styles using Tailwind classes. You can also create new CSS files and import them into your components.
+## API Endpoints
+### Authentication
+- `POST /api/auth/signup` - User registration (student/instructor)
+- `POST /api/auth/login` - User login and JWT token generation
+- `POST /api/auth/verify-otp` - OTP verification for account security
+- `POST /api/auth/forgot-password` - Password reset request
 
-The project is set up to use `postcss-cli` to process your CSS files. You can add your own `tailwind.config.js` file to customize your Tailwind setup.
+### Courses
+- `GET /api/courses` - Fetch all available courses
+- `GET /api/courses/:id` - Fetch course details by ID
+- `POST /api/courses` - Create a new course (Instructor only)
+- `PUT /api/courses/:id` - Update an existing course
+- `DELETE /api/courses/:id` - Delete a course
+- `POST /api/courses/:id/rate` - Rate a course
 
-## Contributing
+## Installation & Setup
+### Prerequisites:
+- Node.js (v16+)
+- MongoDB (local or cloud instance)
 
-Contributions are welcome! If you have any suggestions or find any issues, please feel free to open an issue or a pull request.
+
+
+
+   
+
